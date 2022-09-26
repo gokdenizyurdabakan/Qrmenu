@@ -1,0 +1,37 @@
+{% include "layout.html" %}
+
+
+{% block body %}
+
+
+    <div class="container mt-5">
+        <a href="{% url 'product_list'%}" class = "btn btn-danger">ÜRÜN LİSTESİ</a>
+        <hr>
+        <a href="{% url 'category_list'%}" class = "btn btn-danger">KATEGORİ LİSTESİ</a>
+        <hr>
+        <div class ="row">
+
+            <div class = "col-sm-12">
+               
+                <h2>{{title}}</h2>
+
+                <hr>
+                
+                <form method  ="POST" enctype = "multipart/form-data">
+                    {{form.as_p}}
+                    {% csrf_token %}
+                    <hr>
+                    <button type = "submit" class = "btn btn-primary">KAYDET</button>
+
+
+                </form>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+{% endblock body %}
+
+

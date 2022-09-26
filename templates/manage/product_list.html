@@ -1,0 +1,70 @@
+{% include "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class = "row">
+
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">KATEGORİ</th>
+                <th scope="col">İSİM</th>
+                <th scope="col">İÇERİK</th>
+                <th scope="col">FİYAT</th>
+                <th scope="col">DURUM</th>
+                <th scope="col">RESİM</th>
+                <th scope="col">action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {% for item in product %}
+            
+                <tr>
+                    <th scope="row">{{item.pk}}</th>
+                    <td>{{item.category}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.content}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.status}}</td>
+                    <td>
+                      {% if item.cover_image %}
+                      
+                          <img src="{{ item.cover_image.url }}" width="200" height="150">
+
+                      {% else %}
+                      <h3>Görsel Yok</h3>
+                      {% endif %}
+
+                    </td> 
+
+
+
+                    <td>
+                        <a href="{%url 'product_update' item.pk%}" class="btn btn-primary">Güncelle</a>
+                        <a href="{%url 'product_delete' item.pk%}" class="btn btn-danger">Sil</a>
+
+                    </td>
+                
+                </tr>
+
+            {% endfor %}
+              
+
+            </tbody>
+          </table>
+        
+
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock content %}

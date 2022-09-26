@@ -1,0 +1,52 @@
+{% include "layout.html" %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class = "row">
+
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">BAŞLIK</th>
+                <th scope="col">DURUM</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {% for item in items %}
+            
+            <tr>
+                <th scope="row">{{item.pk}}</th>
+                <td>{{item.title}}</td>
+                <td>{{item.status}}</td>
+                
+                <td>
+                    <a href="{%url 'category_update' item.pk%}" class="btn btn-primary">Güncelle</a>
+                    <a href="{%url 'category_delete' item.pk%}" class="btn btn-danger">Sil</a>
+
+                </td>
+            
+            </tr>
+
+            {% endfor %}
+              
+
+            </tbody>
+          </table>
+        
+
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock body %}
+
+
